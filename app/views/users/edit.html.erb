@@ -1,0 +1,17 @@
+<% provide(:title, "アカウント設定") %>
+<h2 class="title">アカウント設定</h2>
+<div class="form">
+  <%= form_with(model: @user) do |f| %>
+    <%= render 'shared/error_messages' %>
+    <%= f.label :email,"メールアドレス" %>
+    <%= f.email_field :email %>
+
+    <%= f.label :password, "パスワード" %>
+    <%= f.password_field :password %>
+
+    <%= f.label :password_confirmation, "パスワードの確認" %>
+    <%= f.password_field :password_confirmation %>
+
+    <%= f.submit "変更", class: "btn" %>
+  <% end %>
+</div>
