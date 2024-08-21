@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       reset_session
       log_in user
-      redirect_to edit_user_path(user) #リダイレクト先はパスワードのindexにする予定。
+      redirect_to user#リダイレクト先はパスワードのindexにする予定。
     else
       flash.now[:danger] = 'メールアドレスまたはパスワードが正しくありません。'
       render 'new', status: :unprocessable_entity
@@ -15,5 +15,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    log_out
+    redirect_to login_url, status: :see_other
   end
 end

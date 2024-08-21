@@ -3,9 +3,20 @@
     <h1><%= link_to "パスワード管理", '#' %></h1>
     <nav>
       <ul class="nav">
-        <li><%= link_to "パスワード", '#' %></li>
-        <li><%= link_to "カテゴリー", '#' %></li>
-        <li><%= link_to "アカウント", '#' %></li>
+      <% if logged_in? %>
+        <li class="nav-item"><%= link_to "パスワード", '#' %></li>
+        <li class="nav-item"><%= link_to "カテゴリー", '#' %></li>
+        <li class="nav-item" ><%= link_to "アカウント ▼", '#' %>
+          <ul class="dropdown-lists">
+            <li class="dropdown-list"><%= link_to "アカウント設定",
+            edit_user_path(current_user) %></li>
+            <li class="dropdown-list"><%= link_to "ログアウト",
+            logout_path, data: { "turbo-method": :delete } %></li>
+          </ul>
+        </li>
+      <% else %>
+        <li class="nav-item"><%= link_to "ログイン", login_path %></li>
+      <% end %>
       </ul>
     </nav>
   </div>
