@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_08_19_075302) do
+ActiveRecord::Schema[7.0].define(version: 2024_08_21_161603) do
+  create_table "passwords", force: :cascade do |t|
+    t.string "title"
+    t.string "account"
+    t.string "password"
+    t.string "url"
+    t.text "memo"
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index "\"user_id\", \"created_at\", \"upadted_at\"", name: "index_passwords_on_user_id_and_created_at_and_upadted_at"
+    t.index ["user_id"], name: "index_passwords_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "password_digest"
@@ -18,4 +31,5 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_19_075302) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "passwords", "users"
 end
