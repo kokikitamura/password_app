@@ -1,10 +1,10 @@
 <header class="header">
   <div class="container header-container">
-    <h1><%= link_to "パスワード管理", '#' %></h1>
+    <h1><%= link_to "パスワード管理", passwords_path %></h1>
     <nav>
       <ul class="nav">
       <% if logged_in? %>
-        <li class="nav-item"><%= link_to "パスワード", '#' %></li>
+        <li class="nav-item"><%= link_to "パスワード", passwords_path %></li>
         <li class="nav-item"><%= link_to "カテゴリー", '#' %></li>
         <li class="nav-item" ><%= link_to "アカウント ▼", '#' %>
           <ul class="dropdown-lists">

@@ -1,0 +1,17 @@
+<% provide(:title, 'パスワード一覧') %>
+<h2 class="title">パスワード一覧</h2>
+<div class="side-of-the-table">
+  <h3>タイトル</h3>
+  <h3>アカウント名</h3>
+</div>
+<ul class="passwords">
+  <% @passwords.each do |password| %>
+    <li class="password-list">
+      <a href="#" class="link_to_show"></a>
+      <h3><%= password.title %></h3>
+      <p><%= password.account %></p>
+      <%= link_to "編集", "#", class: "btn-small btn-small-blue" %>
+      <%= link_to "削除", "#", class: "btn-small btn-small-pink" %>
+    </li>
+  <% end %>
+</ul>

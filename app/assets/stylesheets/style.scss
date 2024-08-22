@@ -2,7 +2,7 @@
 
 /* 共通 */
 $blue: #02448f;
-$darkblue: #002f64;
+$darkblue: #012956;
 $skyblue: #3da9ff;
 $black: #333333;
 $red: #e01428;
@@ -23,6 +23,10 @@ body {
   font-size: 100%;
   background-color: $white;
   color: $black;
+  /*footerを最下部に固定する*/
+  min-height: 100vh;
+  position: relative;/*←相対位置*/
+  padding-bottom: 120px;/*←footerの高さを確保*/
 }
 
 a {
@@ -45,33 +49,47 @@ img {
   display: block;
   padding: 12px 32px;
   color: #fff;
-  background-color: $blue;
   border-radius: 5px;
   margin: 20px auto;
   width: fit-content;
 }
 
-@media (any-hover: hover) {
-  .btn:hover {
+.btn-blue {
+  background-color: $blue;
+  &:hover {
     background-color: $darkblue;
   }
 }
 
 .btn-red {
-  display: block;
-  padding: 12px 32px;
-  color: #fff;
   background-color: $red;
-  border-radius: 5px;
-  margin: 20px auto;
-  width: fit-content;
-}
-
-@media (any-hover: hover) {
-  .btn-red:hover {
+  &:hover {
     background-color: $darkred;
   }
 }
+
+
+.btn-small {
+  padding: 5px 15px;
+  color: #fff;
+  border-radius: 5px;
+  width: fit-content;
+}
+
+.btn-small-blue {
+  background-color: $blue;
+  &:hover {
+    background-color: $darkblue;
+  }
+}
+
+.btn-small-pink {
+  background-color: $red;
+  &:hover {
+    background-color: $darkred;
+  }
+}
+
 
 /* ―フォーム */
 label {
@@ -101,7 +119,7 @@ input[type="email"]:focus, input[type="password"]:focus {
 /* ―タイトル */
 .title {
   text-align: center;
-  margin: 20px 0;
+  margin: 40px 0;
 }
 
 /* ―flashメッセージ*/
@@ -231,9 +249,12 @@ input[type="email"]:focus, input[type="password"]:focus {
 /* フッター */
 footer {
   text-align: center;
-  padding: 20px 0;
-  margin-top: 50px;
+  padding: 30px 0;
   border-top: 1px solid #cccccc;
+  width: 100%;
+  /*最下部に固定。フッターの高さを変えたときはbodyのpadding-bottomも変える*/
+  position: absolute;/*←絶対位置*/
+  bottom: 0; /*下に固定*/
 }
 
 /* 登録画面 */
@@ -265,5 +286,55 @@ footer {
   margin: auto;
   li{
     list-style-position: inside;
+  }
+}
+
+
+/* パスワード一覧 */
+.password-list{
+  display: flex;
+  border-top: 1px solid #ccc;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  position: relative;  /* link_to_show用 */
+  h3 {
+    margin-left: 10px;
+    width: 45%;
+  }
+  p {
+    margin-right: auto;
+  }
+  &:hover{
+    background: #ddd;
+  }
+  &:first-child {
+    border-top: none;
+  }
+  .btn-small:last-child {
+    margin-right: 10px;
+  }
+}
+
+.link_to_show {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 80%;
+  height: 100%;
+}
+
+.side-of-the-table {
+  display: flex;
+  border-top: 1px solid #ccc;
+  border-bottom: 2px solid #ccc;
+  h3 {
+    margin-left: 10px;
+    width: 45%;
+    font-size: 1rem;
+    height: 40px;
+    display: flex;
+    align-items: center;
   }
 }
