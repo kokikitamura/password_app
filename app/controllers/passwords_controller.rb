@@ -1,6 +1,7 @@
 class PasswordsController < ApplicationController
   def index
     @passwords = Password.where(user_id: current_user.id)
+    @passwords = Password.page(params[:page])
   end
 
   def show
