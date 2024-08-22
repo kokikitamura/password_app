@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_08_21_161603) do
+ActiveRecord::Schema[7.0].define(version: 2024_08_22_075049) do
   create_table "passwords", force: :cascade do |t|
     t.string "title"
     t.string "account"
-    t.string "password"
+    t.string "pass"
     t.string "url"
     t.text "memo"
     t.integer "user_id", null: false
