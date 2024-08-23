@@ -50,7 +50,7 @@ class PasswordsController < ApplicationController
 
   def destroy
     Password.find(params[:id]).destroy
-    flash[:notice] = "削除しました"
+    flash[:success] = "削除しました"
     redirect_to passwords_path, status: :see_other
   end
 end
