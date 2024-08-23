@@ -2,8 +2,18 @@ class PasswordsController < ApplicationController
   before_action :logged_in_user, only: [:index, :show, :new, :create, :edit, :update, :destroy]
 
   def index
-    @passwords = Password.where(password_id: current_user.id)
-    @passwords = Password.page(params[:page])
+    if params[:created_latest]
+      @passwords = Password.created_latest.where(user_id: current_user.id).page(params[:page])
+    elsif params[:created_old]
+      @passwords = Password.created_old.where(user_id: current_user.id).page(params[:page])
+    elsif params[:updated_latest]
+      @passwords = Password.updated_latest.where(user_id: current_user.id).page(params[:page])
+    elsif params[:updated_old]
+      @passwords = Password.updated_old.where(user_id: current_user.id).page(params[:page])
+    else
+      @passwords = Password.created_latest.where(user_id: current_user.id).page(params[:page])
+      #デフォルトは作成日が新しい順
+    end
   end
 
   def show
