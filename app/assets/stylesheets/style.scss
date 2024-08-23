@@ -34,7 +34,7 @@ a {
 }
 
 img {
-  min-width: 100%;
+  max-width: 100%;
 }
 
 .container {
@@ -192,6 +192,7 @@ textarea {
   align-items: center;
   h1 {
     display: inline;
+    width: 180px;
   }
   a {
     color: #ffffff;
