@@ -246,6 +246,7 @@ textarea {
   position: absolute;
   top: 80px;
   right: 0;
+  z-index: 10;
 }
 
 .nav-item:hover .dropdown-lists {
@@ -367,6 +368,7 @@ footer {
   display: flex;
   border-top: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
+  margin-top: 20px;
   h3 {
     margin-left: 1%;
     width: 35%;
@@ -377,6 +379,22 @@ footer {
   }
 }
 
+.search_form {
+  display: flex;
+  width: 35%;
+  min-width: 200px;
+  height: 2.4rem;
+  margin-right: auto;
+  gap: 10px;
+}
+
+.serach-form-and-add-btn {
+display: flex;
+margin: 20px 0;
+.btn {
+  margin: 0;
+}
+}
 
 
 /* パスワード編集画面 */

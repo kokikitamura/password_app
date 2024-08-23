@@ -8,4 +8,10 @@ class Password < ApplicationRecord
   scope :updated_old, -> {order(updated_at: :asc)}
   validates :user_id, presence: true
   validates :title, presence: true
+
+  # 検索
+  def self.search_for(word)
+    Password.where("title LIKE?", "%#{word}%")
+  end
+
 end
