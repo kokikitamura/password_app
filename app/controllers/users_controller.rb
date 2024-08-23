@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:success] = "アカウントを更新しました"
+      flash[:success] = "更新しました"
       redirect_to @user
     else
       render 'edit', status: :unprocessable_entity
@@ -38,7 +38,7 @@ class UsersController < ApplicationController
 
   def destroy
     User.find(params[:id]).destroy
-    flash[:notice] = "アカウントを削除しました"
+    flash[:notice] = "削除しました"
     redirect_to new_user_path, status: :see_other
   end
 

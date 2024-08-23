@@ -1,6 +1,10 @@
 <header class="header">
   <div class="container header-container">
-    <h1><%= link_to "パスワード管理", passwords_path %></h1>
+  <% if logged_in? %>
+    <h1><%= link_to "PASSWARD", passwords_path %></h1>
+  <% else %>
+    <h1><%= link_to "PASSWARD", login_path %></h1>
+  <% end %>
     <nav>
       <ul class="nav">
       <% if logged_in? %>

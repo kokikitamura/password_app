@@ -1,11 +1,13 @@
 <% provide(:title, "アカウント") %>
 <h2 class="title">アカウント</h2>
-<div class="acount-item">
+<div class="show-item">
   <h3>メールアドレス</h3>
   <p><%= @user.email %></p>
 </div>
-<div class="acount-item">
+<div class="show-item">
   <h3>パスワード</h3>
   <p>●●●●●●</p>
 </div>
+<div class="center">
 <%= link_to "アカウント設定", edit_user_path(@user), method: :get, class: "btn btn-blue" %>
+</div>

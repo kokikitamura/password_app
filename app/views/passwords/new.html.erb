@@ -1,2 +1,23 @@
-<h1>Passwords#new</h1>
-<p>Find me in app/views/passwords/new.html.erb</p>
+<% provide(:title, "パスワード追加") %>
+<h2 class="title">パスワード追加</h2>
+<div class="form">
+  <%= form_with(model: @password) do |f| %>
+
+    <%= f.label :title,"タイトル" %>
+    <%= f.text_field :title %>
+
+    <%= f.label :account,"アカウント名" %>
+    <%= f.text_field :account %>
+
+    <%= f.label :pass,"パスワード" %>
+    <%= f.text_field :pass, autocomplete: "off" %>
+
+    <%= f.label :url, "URL" %>
+    <%= f.text_field :url %>
+
+    <%= f.label :memo, "メモ" %>
+    <%= f.text_area :memo %>
+
+    <%= f.submit "追加", class: "btn btn-blue" %>
+  <% end %>
+</div>

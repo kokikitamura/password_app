@@ -1,5 +1,5 @@
 <% provide(:title, 'パスワード一覧') %>
-<h2 class="title">パスワード一覧</h2>
+<%= link_to "＋追加", new_password_path, class: "btn btn-blue" %>
 <div class="side-of-the-table">
   <h3>タイトル</h3>
   <h3>アカウント名</h3>
@@ -7,11 +7,12 @@
 <ul class="passwords">
   <% @passwords.each do |password| %>
     <li class="password-list">
-      <a href="#" class="link_to_show"></a>
+      <%= link_to "", password, class: "link_to_show" %>
       <h3><%= password.title %></h3>
       <p><%= password.account %></p>
-      <%= link_to "編集", "#", class: "btn-small btn-small-blue" %>
-      <%= link_to "削除", "#", class: "btn-small btn-small-pink" %>
+      <%= link_to "編集", edit_password_path(password), class: "btn-small btn-small-blue" %>
+      <%= link_to "削除", password, class: "btn-small btn-small-red",
+        data: { "turbo-method": :delete, turbo_confirm: "本当に削除しますか？" } %>
     </li>
   <% end %>
 </ul>

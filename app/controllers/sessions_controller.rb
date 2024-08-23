@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       forwarding_url = session[:forwarding_url]
       reset_session
       log_in user
-      redirect_to forwarding_url || user
+      redirect_to forwarding_url || passwords_path
     else
       flash.now[:danger] = "メールアドレスまたはパスワードが正しくありません。"
       render 'new', status: :unprocessable_entity

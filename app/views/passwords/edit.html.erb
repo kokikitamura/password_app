@@ -1,2 +1,24 @@
-<h1>Passwords#edit</h1>
-<p>Find me in app/views/passwords/edit.html.erb</p>
+<% provide(:title, "パスワード編集") %>
+<h2 class="title">パスワード編集</h2>
+<div class="form">
+  <%= form_with(model: @password) do |f| %>
+    <%= f.label :title,"タイトル" %>
+    <%= f.text_field :title %>
+
+    <%= f.label :account,"アカウント名" %>
+    <%= f.text_field :account %>
+
+    <%= f.label :pass,"パスワード" %>
+    <%= f.text_field :pass, autocomplete: "off" %>
+
+    <%= f.label :url, "URL" %>
+    <%= f.text_field :url %>
+
+    <%= f.label :memo, "メモ" %>
+    <%= f.text_area :memo %>
+
+    <%= f.submit "更新", class: "btn btn-blue" %>
+    <%= link_to "削除", @password, class: "btn btn-red",
+        data: { "turbo-method": :delete, turbo_confirm: "本当に削除しますか？" } %>
+  <% end %>
+</div>
