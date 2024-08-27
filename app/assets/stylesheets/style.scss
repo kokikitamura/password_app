@@ -398,8 +398,29 @@ margin: 50px 0 20px;
 }
 
 
-/* パスワード編集画面 */
-
+/* カテゴリー一覧 */
+.category-list{
+  display: flex;
+  width: 50%;
+  margin: auto;
+  border-top: 1px solid #ccc;
+  align-items: center;
+  gap: 1%;
+  padding: 10px 0;
+  position: relative;  /* link_to_show用 */
+  p {
+    margin-left: 1%;
+    margin-right: auto;
+    width: 30%;
+    overflow-wrap: anywhere;
+  }
+  &:hover{
+    background: #ddd;
+  }
+  .btn-small:last-child {
+    margin-right: 10px;
+  }
+}
 
 
 

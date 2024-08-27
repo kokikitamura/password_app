@@ -1,11 +1,13 @@
 <% provide(:title, 'カテゴリー一覧') %>
 <h2 class="title">カテゴリー一覧</h2>
 
-<%= link_to "＋カテゴリー追加", new_category_path, class: "btn btn-blue" %>
+<div class="center">
+  <%= link_to "＋カテゴリー追加", new_category_path, class: "btn btn-blue" %>
+</div>
 <ul class="">
   <% @categories.each do |category| %>
-    <li class="password-list">
-      <h3><%= category.name %></h3>
+    <li class="category-list">
+      <p><%= category.name %></p>
       <%= link_to "編集", edit_category_path(category), class: "btn-small btn-small-blue" %>
       <%= link_to "削除", category, class: "btn-small btn-small-red",
         data: { "turbo-method": :delete, turbo_confirm: "本当に削除しますか？" } %>
