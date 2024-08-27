@@ -1,19 +1,18 @@
 <% provide(:title, 'パスワード一覧') %>
 <h2 class="title">パスワード一覧</h2>
 
-    <div class="serach-form-and-add-btn">
-      <%= form_with url: search_path, local: true, method: :get, class:"search_form" do |f| %>
-        <%= f.text_field :word %>
-        <%= f.submit "検索", class: "btn-small btn-small-blue" %>
+    <div class="search-form-and-add-btn">
+      <%= form_with(url: passwords_path, local: true, method: :get, class:"search_form") do |f| %>
+        <%= f.text_field(:word, value: @word, placeholder: "タイトルで検索") %>
+        <%= f.submit "検索", name: nil, class: "btn-small btn-small-blue" %>
       <% end %>
         <%= link_to "＋パスワード追加", new_password_path, class: "btn btn-blue" %>
     </div>
 
-  <%= link_to '作成日が新しい順', passwords_path(created_latest: "true") %>
-  | <%= link_to '作成日が古い順', passwords_path(created_old: "true") %>
-  | <%= link_to '更新日が新しい順', passwords_path(updated_latest: "true") %>
-  | <%= link_to '更新日が古い順', passwords_path(updated_old: "true") %>
-
+  <%= link_to '作成日が新しい順', passwords_path(created_latest: true, word: params[:word]) %>
+  | <%= link_to '作成日が古い順', passwords_path(created_old: true, word: params[:word]) %>
+  | <%= link_to '更新日が新しい順', passwords_path(updated_latest: true, word: params[:word]) %>
+  | <%= link_to '更新日が古い順', passwords_path(updated_old: true, word: params[:word]) %>
 
 
 <div class="side-of-the-table">
