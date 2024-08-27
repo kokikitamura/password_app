@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root "passwords#index"
   resources :users
   get "users/:id/withdraw", to: "users#withdraw"
   get    "/login",   to: "sessions#new"
