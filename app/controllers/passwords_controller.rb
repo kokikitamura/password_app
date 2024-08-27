@@ -69,9 +69,8 @@ class PasswordsController < ApplicationController
     flash[:success] = "削除しました"
     redirect_to passwords_path, status: :see_other
   end
-end
 
-private
+  private
 
   def password_params
     params.require(:password).permit(:title, :account, :pass, :url, :memo)
@@ -87,3 +86,5 @@ private
         redirect_to login_url, status: :see_other
       end
     end
+end
+

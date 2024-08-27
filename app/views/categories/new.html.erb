@@ -1,0 +1,11 @@
+<% provide(:title, "カテゴリー追加") %>
+<h2 class="title">カテゴリー追加</h2>
+<div class="form">
+  <%= form_with(model: @category) do |f| %>
+
+    <%= f.label :name,"カテゴリー名" %>
+    <%= f.text_field :name %>
+
+    <%= f.submit "追加", class: "btn btn-blue" %>
+  <% end %>
+</div>
