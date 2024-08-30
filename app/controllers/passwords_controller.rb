@@ -58,7 +58,7 @@ class PasswordsController < ApplicationController
     @password = Password.find(params[:id])
     if @password.update(password_params)
       flash[:success] = "更新しました"
-      redirect_to passwords_path
+      redirect_to @password
     else
       render 'edit', status: :unprocessable_entity
     end
@@ -72,9 +72,9 @@ class PasswordsController < ApplicationController
 
   private
 
-  def password_params
-    params.require(:password).permit(:title, :account, :pass, :url, :memo)
-  end
+    def password_params
+      params.require(:password).permit(:title, :account, :pass, :category_id, :url, :memo)
+    end
 
     # beforeフィルタ
 

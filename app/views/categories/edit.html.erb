@@ -2,11 +2,17 @@
 <h2 class="title">カテゴリー編集</h2>
 <div class="form">
   <%= form_with(model: @category) do |f| %>
-    <%= f.label :name,"カテゴリー名" %>
-    <%= f.text_field :name%>
+    <div class="form-item">
+      <%= f.label :name,"カテゴリー名" %>
+      <%= f.text_field :name%>
+    </div>
 
-    <%= f.submit "更新", class: "btn btn-blue" %>
-    <%= link_to "削除", @category, class: "btn btn-red",
-        data: { "turbo-method": :delete, turbo_confirm: "本当に削除しますか？" } %>
+    <div class="btn-wrapper">
+      <%= f.submit "更新", class: "btn btn-blue" %>
+    </div>
+    <div class="btn-wrapper">
+      <%= link_to "削除", @category, class: "btn btn-red",
+          data: { "turbo-method": :delete, turbo_confirm: "本当に削除しますか？" } %>
+    </div>
   <% end %>
 </div>

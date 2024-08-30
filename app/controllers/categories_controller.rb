@@ -3,6 +3,11 @@ class CategoriesController < ApplicationController
     @categories = Category.where(user_id: current_user.id)
   end
 
+  def show
+    @category = Category.find(params[:id])
+    @passwords = @category.passwords.where(user_id: current_user.id)
+  end
+
   def new
     @category = Category.new
   end

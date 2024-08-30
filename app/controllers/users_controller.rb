@@ -16,7 +16,7 @@ class UsersController < ApplicationController
       reset_session
       log_in @user
       flash[:success] = "登録が完了しました"
-      redirect_to @user
+      redirect_to passwords_path
     else
       render 'new', status: :unprocessable_entity
     end

@@ -2,22 +2,35 @@
 <h2 class="title">パスワード追加</h2>
 <div class="form">
   <%= form_with(model: @password) do |f| %>
-
-    <%= f.label :title,"タイトル" %>
-    <%= f.text_field :title %>
-
-    <%= f.label :account,"アカウント名" %>
-    <%= f.text_field :account %>
-
-    <%= f.label :pass,"パスワード" %>
-    <%= f.text_field :pass, autocomplete: "off" %>
-
-    <%= f.label :url, "URL" %>
-    <%= f.text_field :url %>
-
-    <%= f.label :memo, "メモ" %>
-    <%= f.text_area :memo %>
-
-    <%= f.submit "追加", class: "btn btn-blue" %>
+    <div class="form-item">
+      <%= f.label :title,"タイトル" %>
+      <%= f.text_field :title %>
+    </div>
+    <div class="form-item">
+      <%= f.label :account,"アカウント名" %>
+      <%= f.text_field :account %>
+    </div>
+    <div class="form-item">
+      <%= f.label :pass,"パスワード" %>
+      <%= f.text_field :pass, autocomplete: "off" %>
+    </div>
+    <div class="form-item">
+      <%= f.label :category_id,"カテゴリー" %>
+      <div class="select-box">
+        <%= f.select :category_id, Category.where(user_id: current_user.id).map{|o| [o.name, o.id]},
+          { include_blank: "------" } %>
+      </div>
+    </div>
+    <div class="form-item">
+      <%= f.label :url, "URL" %>
+      <%= f.text_field :url %>
+    </div>
+    <div class="form-item">
+      <%= f.label :memo, "メモ" %>
+      <%= f.text_area :memo %>
+    </div>
+    <div class="btn-wrapper">
+      <%= f.submit "追加", class: "btn btn-blue" %>
+    </div>
   <% end %>
 </div>

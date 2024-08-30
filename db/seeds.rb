@@ -2,6 +2,9 @@ user = User.create!(email: "aaaa@aaa.com",
                     password:              "aaaaaa",
                     password_confirmation: "aaaaaa")
 
+user.categories.create!(name: "AAA")
+user.categories.create!(name: "BBB")
+user.categories.create!(name: "CCC")
 
 100.times do |n|
   title  = "example-#{n+1}"
@@ -9,11 +12,13 @@ user = User.create!(email: "aaaa@aaa.com",
   chars = ('a'..'z').to_a
   pass = 8.times.map{ chars.sample }.join
   url = "https://example-#{n+1}.com"
-  memo = "example-#{n+1} Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore"
+  memo = "example-#{n+1} Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+  category_id = n % 3 + 1
   user.passwords.create!(title: title,
                           account: account,
                           pass: pass,
                           url: url,
-                          memo: memo
+                          memo: memo,
+                          category_id: category_id
 )
 end

@@ -1,9 +1,5 @@
 <% provide(:title, "パスワード詳細") %>
-<h2 class="title">パスワード詳細</h2>
-<div class="show-item">
-  <h3>タイトル</h3>
-  <p><%= @password.title %></p>
-</div>
+<h2 class="title"><%= @password.title %></h2>
 <div class="show-item">
   <h3>アカウント名</h3>
   <p><%= @password.account %></p>
@@ -13,6 +9,10 @@
   <p><%= @password.pass %></p>
 </div>
 <div class="show-item">
+  <h3>カテゴリー</h3>
+  <p><%= link_to @password.category.name, @password.category %></p>
+</div>
+<div class="show-item">
   <h3>URL</h3>
   <p><%= @password.url %></p>
 </div>
@@ -20,6 +20,6 @@
   <h3>メモ</h3>
   <p><%= @password.memo %></p>
 </div>
-<div class="center">
+<div class="btn-wrapper">
   <%= link_to "編集", edit_password_path(@password), method: :get, class: "btn btn-blue" %>
 </div>
