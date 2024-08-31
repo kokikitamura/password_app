@@ -2,11 +2,13 @@
 <h2 class="title"><%= @password.title %></h2>
 <div class="show-item">
   <h3>アカウント名</h3>
-  <p><%= @password.account %></p>
+  <p id="account"><%= @password.account %></p>
+  <button id="account-copy" class="btn-small btn-small-gray">コピー</button>
 </div>
 <div class="show-item">
   <h3>パスワード</h3>
-  <p><%= @password.pass %></p>
+  <p id="pass"><%= @password.pass %></p>
+  <button id="pass-copy" class="btn-small btn-small-gray">コピー</button>
 </div>
 <div class="show-item">
   <h3>カテゴリー</h3>

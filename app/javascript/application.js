@@ -38,7 +38,7 @@ window.$ = jquery
 // });
 
 
-
+//パスワードジェネレーター
 document.addEventListener("turbo:load", function() {
   function generatePassword(length, includeCapital, includeNumbers, includeSymbols) {
     let charset = "abcdefghijklmnopqrstuvwxyz";
@@ -97,4 +97,30 @@ document.addEventListener("turbo:render", function() {
     // パスワード入力フォームにセット
     $("#password_field").val(password);
   });
+});
+
+//パスワードのコピーボタン
+$(document).on('click', '#pass-copy', function(){
+  // コピーする文章の取得
+  let text = $("#pass").text();
+  // Copyの文字を変更
+  $("#pass-copy").text("コピー済");
+
+  if (navigator.clipboard == undefined) {
+      window.clipboardData.setData("Text", text);
+  } else {
+      navigator.clipboard.writeText(text);
+  }
+});
+
+//アカウント名のコピーボタン
+$(document).on('click', '#account-copy', function(){
+  let text = $("#account").text();
+  $("#account-copy").text("コピー済");
+
+  if (navigator.clipboard == undefined) {
+      window.clipboardData.setData("Text", text);
+  } else {
+      navigator.clipboard.writeText(text);
+  }
 });
