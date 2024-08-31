@@ -36,3 +36,65 @@ window.$ = jquery
 // 		alert('「'+text+'」をコピーしました');
 // 	});
 // });
+
+
+
+document.addEventListener("turbo:load", function() {
+  function generatePassword(length, includeCapital, includeNumbers, includeSymbols) {
+    let charset = "abcdefghijklmnopqrstuvwxyz";
+    if (includeCapital) charset += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    if (includeNumbers) charset += "0123456789";
+    if (includeSymbols) charset += "!@#$%";
+
+    let password = "";
+    for (let i = 0; i < length; i++) {
+      password += charset[Math.floor(Math.random() * charset.length)];
+    }
+    return password;
+  }
+
+  $("#generate_password_button").click(function() {
+    // 各オプションの値を取得
+    const length = $("#password_length").val();
+    let includeCapital = $("#include_capital").is(":checked");
+    let includeNumbers = $("#include_numbers").is(":checked");
+    let includeSymbols = $("#include_symbols").is(":checked");
+
+    // パスワード生成
+    const password = generatePassword(length, includeCapital, includeNumbers, includeSymbols);
+
+    // パスワード入力フォームにセット
+    $("#password_field").val(password);
+  });
+});
+
+
+
+document.addEventListener("turbo:render", function() {
+  function generatePassword(length, includeCapital, includeNumbers, includeSymbols) {
+    let charset = "abcdefghijklmnopqrstuvwxyz";
+    if (includeCapital) charset += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    if (includeNumbers) charset += "0123456789";
+    if (includeSymbols) charset += "!@#$%";
+
+    let password = "";
+    for (let i = 0; i < length; i++) {
+      password += charset[Math.floor(Math.random() * charset.length)];
+    }
+    return password;
+  }
+
+  $("#generate_password_button").click(function() {
+    // 各オプションの値を取得
+    const length = $("#password_length").val();
+    let includeCapital = $("#include_capital").is(":checked");
+    let includeNumbers = $("#include_numbers").is(":checked");
+    let includeSymbols = $("#include_symbols").is(":checked");
+
+    // パスワード生成
+    const password = generatePassword(length, includeCapital, includeNumbers, includeSymbols);
+
+    // パスワード入力フォームにセット
+    $("#password_field").val(password);
+  });
+});

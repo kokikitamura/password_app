@@ -94,9 +94,9 @@ img {
 }
 
 .btn-small-gray {
-  background-color: #5d5d5d;
+  background-color: #acacac;
   &:hover {
-    background-color: #333333;
+    background-color: #838383;
   }
 }
 
@@ -429,9 +429,9 @@ footer {
 .search-form-and-add-btn {
 display: flex;
 margin: 50px 0 20px;
-.btn {
-  margin: 0;
-}
+  .btn {
+    margin: 0;
+  }
 }
 
 .sort-link {
@@ -446,6 +446,44 @@ margin: 50px 0 20px;
   pointer-events: none;
   font-weight: bold;
 }
+
+/* パスワードジェネレーター */
+.password-generator {
+  label {
+    display: flex;
+    align-items: center;
+  }
+}
+
+
+.checkbox {
+  display: flex;
+  gap: 10px;
+  width: 160px;
+  margin: 5px auto;
+}
+
+input[type="checkbox"] {
+  width: 1rem;
+}
+
+input[type="number"] {
+  background: #eee;
+  height: 2.0rem;
+  width: 80px;
+  padding: 0 16px;
+  border-radius: 4px;
+  border: none;
+  box-shadow: 0 0 0 1px #ccc inset;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+
+
+
+
 
 /* カテゴリー一覧 */
 .category-list{
