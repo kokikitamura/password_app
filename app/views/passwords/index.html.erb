@@ -9,10 +9,14 @@
         <%= link_to "＋パスワード追加", new_password_path, class: "btn btn-blue" %>
     </div>
 
-  <%= link_to '作成日が新しい順', passwords_path(created_latest: true, word: params[:word]), class:params[:created_latest] ? "sort-link selected" : "sort-link" %>
-  | <%= link_to '作成日が古い順', passwords_path(created_old: true, word: params[:word]), class:params[:created_old] ? "sort-link selected" : "sort-link" %>
-  | <%= link_to '更新日が新しい順', passwords_path(updated_latest: true, word: params[:word]), class:params[:updated_latest] ? "sort-link selected" : "sort-link" %>
-  | <%= link_to '更新日が古い順', passwords_path(updated_old: true, word: params[:word]), class:params[:updated_old] ? "sort-link selected" : "sort-link" %>
+  <%= link_to '作成日が新しい順', passwords_path(sort_key:"created_latest", word: params[:word]),\
+    class:params[:sort_key] == "created_latest" || !params[:sort_key] ? "sort-link selected" : "sort-link" %>
+  | <%= link_to '作成日が古い順', passwords_path(sort_key:"created_old", word: params[:word]),\
+    class:params[:sort_key] == "created_old" ? "sort-link selected" : "sort-link" %>
+  | <%= link_to '更新日が新しい順', passwords_path(sort_key:"updated_latest", word: params[:word]),\
+    class:params[:sort_key] == "updated_latest" ? "sort-link selected" : "sort-link" %>
+  | <%= link_to '更新日が古い順', passwords_path(sort_key:"updated_old", word: params[:word]),\
+    class:params[:sort_key] == "updateted_old" ? "sort-link selected" : "sort-link" %>
 
 
 <div class="side-of-the-table">

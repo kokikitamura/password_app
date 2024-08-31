@@ -4,26 +4,26 @@ class PasswordsController < ApplicationController
   def index
     @word = params[:word]
     if @word.nil?
-      if params[:created_latest]
+      if params[:sort_key] == "created_latest"
         @passwords = Password.created_latest.where(user_id: current_user.id).page(params[:page]).per(50)
-      elsif params[:created_old]
+      elsif params[:sort_key] == "created_old"
         @passwords = Password.created_old.where(user_id: current_user.id).page(params[:page]).per(50)
-      elsif params[:updated_latest]
+      elsif params[:sort_key] == "updated_latest"
         @passwords = Password.updated_latest.where(user_id: current_user.id).page(params[:page]).per(50)
-      elsif params[:updated_old]
+      elsif params[:sort_key] == "updated_old"
         @passwords = Password.updated_old.where(user_id: current_user.id).page(params[:page]).per(50)
       else
       @passwords = Password.created_latest.where(user_id: current_user.id).page(params[:page]).per(50)
       #デフォルトは作成日が新しい順
       end
     else
-      if params[:created_latest]
+      if params[:sort_key] == "created_latest"
         @passwords = Password.created_latest.where(user_id: current_user.id).search_for(@word).page(params[:page]).per(50)
-      elsif params[:created_old]
+      elsif params[:sort_key] == "created_old"
         @passwords = Password.created_old.where(user_id: current_user.id).search_for(@word).page(params[:page]).per(50)
-      elsif params[:updated_latest]
+      elsif params[:sort_key] == "updated_latest"
         @passwords = Password.updated_latest.where(user_id: current_user.id).search_for(@word).page(params[:page]).per(50)
-      elsif params[:updated_old]
+      elsif params[:sort_key] == "updated_old"
         @passwords = Password.updated_old.where(user_id: current_user.id).search_for(@word).page(params[:page]).per(50)
       else
       @passwords = Password.created_latest.where(user_id: current_user.id).search_for(@word).page(params[:page]).per(50)

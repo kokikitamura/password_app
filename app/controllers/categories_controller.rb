@@ -5,13 +5,13 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
-    if params[:created_latest]
+    if params[:sort_key] == "created_latest"
       @passwords = @category.passwords.created_latest.where(user_id: current_user.id).page(params[:page]).per(50)
-    elsif params[:created_old]
+    elsif params[:sort_key] == "created_old"
       @passwords = @category.passwords.created_old.where(user_id: current_user.id).page(params[:page]).per(50)
-    elsif params[:updated_latest]
+    elsif params[:sort_key] == "updated_latest"
       @passwords = @category.passwords.updated_latest.where(user_id: current_user.id).page(params[:page]).per(50)
-    elsif params[:updated_old]
+    elsif params[:sort_key] == "updated_latest"
       @passwords = @category.passwords.updated_old.where(user_id: current_user.id).page(params[:page]).per(50)
     else
     @passwords = @category.passwords.created_latest.where(user_id: current_user.id).page(params[:page]).per(50)
