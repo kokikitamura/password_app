@@ -5,7 +5,18 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
-    @passwords = @category.passwords.where(user_id: current_user.id).created_latest.page(params[:page]).per(50)
+    if params[:created_latest]
+      @passwords = @category.passwords.created_latest.where(user_id: current_user.id).page(params[:page]).per(50)
+    elsif params[:created_old]
+      @passwords = @category.passwords.created_old.where(user_id: current_user.id).page(params[:page]).per(50)
+    elsif params[:updated_latest]
+      @passwords = @category.passwords.updated_latest.where(user_id: current_user.id).page(params[:page]).per(50)
+    elsif params[:updated_old]
+      @passwords = @category.passwords.updated_old.where(user_id: current_user.id).page(params[:page]).per(50)
+    else
+    @passwords = @category.passwords.created_latest.where(user_id: current_user.id).page(params[:page]).per(50)
+    #デフォルトは作成日が新しい順
+    end
   end
 
   def new

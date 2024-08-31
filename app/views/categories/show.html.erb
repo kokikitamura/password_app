@@ -2,8 +2,13 @@
 <h2 class="title"><%= @category.name %></h2>
 
 <div class="btn-wrapper">
-  <%= link_to "カテゴリー名変更", edit_password_path(@category), method: :get, class: "btn btn-blue" %>
+  <%= link_to "カテゴリー名変更", edit_category_path(@category), method: :get, class: "btn btn-blue" %>
 </div>
+
+<%= link_to '作成日が新しい順', category_path(@category, created_latest: true, word: params[:word]), class:params[:created_latest] ? "sort-link selected" : "sort-link" %>
+  | <%= link_to '作成日が古い順', category_path(@category, created_old: true, word: params[:word]), class:params[:created_old] ? "sort-link selected" : "sort-link" %>
+  | <%= link_to '更新日が新しい順', category_path(@category, updated_latest: true, word: params[:word]), class:params[:updated_latest] ? "sort-link selected" : "sort-link" %>
+  | <%= link_to '更新日が古い順', category_path(@category, updated_old: true, word: params[:word]), class:params[:updated_old] ? "sort-link selected" : "sort-link" %>
 
 <div class="side-of-the-table">
   <h3>タイトル</h3>
