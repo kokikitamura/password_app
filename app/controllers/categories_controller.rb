@@ -5,7 +5,7 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
-    @passwords = @category.passwords.where(user_id: current_user.id)
+    @passwords = @category.passwords.where(user_id: current_user.id).created_latest
   end
 
   def new
