@@ -12,8 +12,32 @@
     </div>
     <div class="form-item">
       <%= f.label :pass,"パスワード" %>
-      <%= f.text_field :pass, autocomplete: "off" %>
+      <%= f.text_field :pass, autocomplete: "off", id: 'password_field' %>
     </div>
+
+    <!-- パスワードジェネレーター -->
+    <div class="password-generator">
+        <div class="checkbox">
+          <%= label_tag :password_length, "文字数" %>
+          <%= number_field_tag :password_length, 8, max: 100, id: 'password_length' %>
+        </div>
+        <div class="chekbox-wrapper">
+          <div class="checkbox">
+            <%= check_box_tag :include_capital, id: 'include_capital' %>
+            <%= label_tag :include_capital, "大文字（A-Z）" %>
+          </div>
+          <div class="checkbox">
+            <%= check_box_tag :include_numbers, id: 'include_numbers' %>
+            <%= label_tag :include_numbers, "数字（0-9）" %>
+          </div>
+          <div class="checkbox">
+            <%= check_box_tag :include_symbols, id: 'include_symbols' %>
+            <%= label_tag :include_symbols, "記号（!@#$%）" %>
+          </div>
+        </div>
+        <button type="button" id="generate_password_button" class="btn-small btn-small-gray">生成</button>
+    </div>
+
     <div class="form-item">
       <%= f.label :category_id,"カテゴリー" %>
       <div class="select-box">
