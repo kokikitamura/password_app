@@ -25,3 +25,7 @@
 <div class="btn-wrapper">
   <%= link_to "編集", edit_password_path(@password), method: :get, class: "btn btn-blue" %>
 </div>
+<div class="btn-wrapper">
+  <%= link_to "削除", @password, class: "btn btn-red",
+    data: { "turbo-method": :delete, turbo_confirm: "本当に削除しますか？" } %>
+</div>
