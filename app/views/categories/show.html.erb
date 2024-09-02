@@ -1,18 +1,23 @@
 <% provide(:title, "パスワード詳細") %>
 <h2 class="title"><%= @category.name %></h2>
 
-<div class="btn-wrapper">
+
+
+<div class="index-tools">
+  <%= form_with(url: category_path(@category), local: true, method: :get, class:"search_form") do |f| %>
+    <%= f.search_field(:word, value: @word, placeholder: "タイトルで検索") %>
+    <%= f.submit "検索", name: nil, class: "btn-small btn-small-blue" %>
+  <% end %>
+  <%= form_with(url: category_url(@category), local: true, method: :get) do |f| %>
+    <%= f.hidden_field :word, value: params[:word] %>
+    <div class="select-box sort-select">
+      <%= f.select :sort_key, options_for_select({作成日が新しい順: "created_latest", 作成日が古い順: "created_old",\
+        更新日が新しい順: "updated_latest", 更新日が古い順: "updated_old"}, params[:sort_key]),\
+        {}, {onchange: "this.form.submit()"} %>
+    </div>
+  <% end %>
   <%= link_to "カテゴリー名変更", edit_category_path(@category), method: :get, class: "btn btn-blue" %>
 </div>
-
-<%= link_to '作成日が新しい順', category_path(@category, sort_key:"created_latest", word: params[:word]),\
-    class:params[:sort_key] == "created_latest" || !params[:sort_key] ? "sort-link selected" : "sort-link" %>
-  | <%= link_to '作成日が古い順', category_path(@category, sort_key:"created_old", word: params[:word]),\
-    class:params[:sort_key] == "created_old" ? "sort-link selected" : "sort-link" %>
-  | <%= link_to '更新日が新しい順', category_path(@category, sort_key:"updated_latest", word: params[:word]),\
-    class:params[:sort_key] == "updated_latest" ? "sort-link selected" : "sort-link" %>
-  | <%= link_to '更新日が古い順', category_path(@category, sort_key:"updated_old", word: params[:word]),\
-    class:params[:sort_key] == "updateted_old" ? "sort-link selected" : "sort-link" %>
 
 <div class="side-of-the-table">
   <h3>タイトル</h3>

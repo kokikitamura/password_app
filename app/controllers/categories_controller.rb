@@ -5,17 +5,31 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
-    if params[:sort_key] == "created_latest"
+    @word = params[:word]
+    if @word.nil?
+      if params[:sort_key] == "created_latest"
+        @passwords = @category.passwords.created_latest.where(user_id: current_user.id).page(params[:page]).per(50)
+      elsif params[:sort_key] == "created_old"
+        @passwords = @category.passwords.created_old.where(user_id: current_user.id).page(params[:page]).per(50)
+      elsif params[:sort_key] == "updated_latest"
+        @passwords = @category.passwords.updated_latest.where(user_id: current_user.id).page(params[:page]).per(50)
+      elsif params[:sort_key] == "updated_old"
+        @passwords = @category.passwords.updated_old.where(user_id: current_user.id).page(params[:page]).per(50)
+      else
       @passwords = @category.passwords.created_latest.where(user_id: current_user.id).page(params[:page]).per(50)
-    elsif params[:sort_key] == "created_old"
-      @passwords = @category.passwords.created_old.where(user_id: current_user.id).page(params[:page]).per(50)
-    elsif params[:sort_key] == "updated_latest"
-      @passwords = @category.passwords.updated_latest.where(user_id: current_user.id).page(params[:page]).per(50)
-    elsif params[:sort_key] == "updated_latest"
-      @passwords = @category.passwords.updated_old.where(user_id: current_user.id).page(params[:page]).per(50)
+      end
     else
-    @passwords = @category.passwords.created_latest.where(user_id: current_user.id).page(params[:page]).per(50)
-    #デフォルトは作成日が新しい順
+      if params[:sort_key] == "created_latest"
+        @passwords = @category.passwords.created_latest.where(user_id: current_user.id).search_for(@word).page(params[:page]).per(50)
+      elsif params[:sort_key] == "created_old"
+        @passwords = @category.passwords.created_old.where(user_id: current_user.id).search_for(@word).page(params[:page]).per(50)
+      elsif params[:sort_key] == "updated_latest"
+        @passwords = @category.passwords.updated_latest.where(user_id: current_user.id).search_for(@word).page(params[:page]).per(50)
+      elsif params[:sort_key] == "updated_old"
+        @passwords = @category.passwords.updated_old.where(user_id: current_user.id).search_for(@word).page(params[:page]).per(50)
+      else
+      @passwords = @category.passwords.created_latest.where(user_id: current_user.id).search_for(@word).page(params[:page]).per(50)
+      end
     end
   end
 
