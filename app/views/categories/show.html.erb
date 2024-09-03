@@ -1,7 +1,7 @@
 <% provide(:title, "パスワード詳細") %>
 <h2 class="title"><%= @category.name %></h2>
-
-
+<%= link_to "＋パスワード追加", new_password_path(from: params[:id]), class: "btn btn-blue" %>
+<%= link_to "カテゴリー名変更", edit_category_path(@category), method: :get, class: "btn btn-blue" %>
 
 <div class="index-tools">
   <%= form_with(url: category_path(@category), local: true, method: :get, class:"search_form") do |f| %>
@@ -16,7 +16,12 @@
         {}, {onchange: "this.form.submit()"} %>
     </div>
   <% end %>
-  <%= link_to "カテゴリー名変更", edit_category_path(@category), method: :get, class: "btn btn-blue" %>
+  <%= form_with(local: true, method: :get) do |f| %>
+    <div class="select-box sort-select">
+        <%= f.select :category_id, Category.where(user_id: current_user.id).map{|o| [o.name, category_path(o)]},
+          { include_blank: "カテゴリー選択" }, {onchange: "location.href=value;"}%>
+    </div>
+  <% end %>
 </div>
 
 <div class="side-of-the-table">

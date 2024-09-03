@@ -1,21 +1,27 @@
 <% provide(:title, 'すべてのパスワード') %>
 <h2 class="title">すべてのパスワード（<%= @all_passwords.count %>）</h2>
+<%= link_to "＋パスワード追加", new_password_path, class: "btn btn-blue" %>
 
-    <div class="index-tools">
-      <%= form_with(url: passwords_path, local: true, method: :get, class:"search_form") do |f| %>
-        <%= f.search_field(:word, value: @word, placeholder: "タイトルで検索") %>
-        <%= f.submit "検索", name: nil, class: "btn-small btn-small-blue" %>
-      <% end %>
-      <%= form_with(url: passwords_url, local: true, method: :get) do |f| %>
-        <%= f.hidden_field :word, value: params[:word] %>
-        <div class="select-box sort-select">
-          <%= f.select :sort_key, options_for_select({作成日が新しい順: "created_latest", 作成日が古い順: "created_old",\
-            更新日が新しい順: "updated_latest", 更新日が古い順: "updated_old"}, params[:sort_key]),\
-            {}, {onchange: "this.form.submit()"} %>
-        </div>
-      <% end %>
-      <%= link_to "＋パスワード追加", new_password_path, class: "btn btn-blue" %>
+<div class="index-tools">
+  <%= form_with(url: passwords_path, local: true, method: :get, class:"search_form") do |f| %>
+    <%= f.search_field(:word, value: @word, placeholder: "タイトルで検索") %>
+    <%= f.submit "検索", name: nil, class: "btn-small btn-small-blue" %>
+  <% end %>
+  <%= form_with(url: passwords_url, local: true, method: :get) do |f| %>
+    <%= f.hidden_field :word, value: params[:word] %>
+    <div class="select-box sort-select">
+      <%= f.select :sort_key, options_for_select({作成日が新しい順: "created_latest", 作成日が古い順: "created_old",\
+        更新日が新しい順: "updated_latest", 更新日が古い順: "updated_old"}, params[:sort_key]),\
+        {}, {onchange: "this.form.submit()"} %>
     </div>
+  <% end %>
+  <%= form_with(local: true, method: :get) do |f| %>
+    <div class="select-box sort-select">
+        <%= f.select :category_id, Category.where(user_id: current_user.id).map{|o| [o.name, category_path(o)]},
+          { include_blank: "カテゴリー選択" }, {onchange: "location.href=value;"}%>
+    </div>
+  <% end %>
+</div>
 
 <div class="side-of-the-table">
   <h3>タイトル</h3>
