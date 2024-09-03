@@ -1,5 +1,5 @@
-<% provide(:title, 'パスワード一覧') %>
-<h2 class="title">パスワード一覧</h2>
+<% provide(:title, 'すべてのパスワード') %>
+<h2 class="title">すべてのパスワード（<%= @all_passwords.count %>）</h2>
 
     <div class="index-tools">
       <%= form_with(url: passwords_path, local: true, method: :get, class:"search_form") do |f| %>

@@ -3,6 +3,7 @@ class PasswordsController < ApplicationController
 
   def index
     @word = params[:word]
+    @all_passwords = Password.where(user_id: current_user.id)
     if @word.nil?
       if params[:sort_key] == "created_latest"
         @passwords = Password.created_latest.where(user_id: current_user.id).page(params[:page]).per(50)
