@@ -75,8 +75,8 @@ class PasswordsController < ApplicationController
         session[:before_edit].clear
       else
         redirect_to passwords_path
-        session[:before_show].clear
-        session[:before_edit].clear
+        session[:before_show]&.clear
+        session[:before_edit]&.clear
       end
     else
       render 'edit', status: :unprocessable_entity

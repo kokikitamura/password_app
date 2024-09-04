@@ -172,9 +172,22 @@ textarea {
 
 /* ―flashメッセージ*/
 .alert {
-  color: $red;
-  text-align: center;
-  margin: 10px 0;
+  border-radius: 5px;
+  padding: 10px 50px;
+  margin: 10px auto 0;
+  width: fit-content;
+}
+
+.alert-notice, .alert-success {
+  background-color: #bcdfff;
+  color: #0067C0;
+  border: solid 1px #0067C0;
+}
+
+.alert-danger {
+  background-color: #ffd4d1;
+  color: #930403;
+  border: solid 1px #930403;
 }
 
 /* ―errorメッセージ*/
