@@ -1,11 +1,6 @@
 <header class="header">
   <div class="container header-container">
-  <% if logged_in? %>
-    <h1><%= link_to image_tag("passward_logo.png"), passwords_path %></h1>
-    
-  <% else %>
-    <h1><%= link_to image_tag("passward_logo.png"), login_path %></h1>
-  <% end %>
+    <h1><%= link_to image_tag("passward_logo.png"), logged_in? ? passwords_path : login_path %></h1>
     <nav>
       <ul class="nav">
       <% if logged_in? %>

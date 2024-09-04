@@ -7,7 +7,7 @@
 <div class="index-tools">
   <%= form_with(url: passwords_path, local: true, method: :get, class:"search_form") do |f| %>
     <%= f.search_field(:word, value: @word, placeholder: "タイトルで検索") %>
-    <%= f.submit "検索", name: nil, class: "btn-small btn-small-blue" %>
+    <%= f.submit "検索", name: nil, class: "btn-small btn-blue" %>
   <% end %>
   <%= form_with(url: passwords_url, local: true, method: :get) do |f| %>
     <%= f.hidden_field :word, value: params[:word] %>
@@ -19,7 +19,7 @@
   <% end %>
   <%= form_with(local: true, method: :get) do |f| %>
     <div class="select-box sort-select">
-        <%= f.select :category_id, Category.where(user_id: current_user.id).map{|o| [o.name, category_path(o)]},
+        <%= f.select :category_id, Category.where(user_id: current_user.id).map{|o| [o.name, category_path(o)]}.unshift(["すべて", passwords_path]),
           { include_blank: "カテゴリー選択" }, {onchange: "location.href=value;"}%>
     </div>
   <% end %>
@@ -35,8 +35,8 @@
       <%= link_to "", password, class: "link_to_show" %>
       <h3><%= password.title %></h3>
       <p><%= password.account %></p>
-      <%= link_to "編集", edit_password_path(password), class: "btn-small btn-small-blue" %>
-      <%= link_to "削除", password, class: "btn-small btn-small-red",
+      <%= link_to "編集", edit_password_path(password), class: "btn-small btn-blue" %>
+      <%= link_to "削除", password, class: "btn-small btn-red",
         data: { "turbo-method": :delete, turbo_confirm: "本当に削除しますか？" } %>
     </li>
   <% end %>

@@ -76,6 +76,13 @@ img {
   }
 }
 
+.btn-gray {
+  background-color: #8b8b8b;
+  &:hover {
+    background-color: #6d6d6d;
+  }
+}
+
 .btn-small {
   padding: 5px 15px;
   color: #fff;
@@ -83,26 +90,6 @@ img {
   width: fit-content;
 }
 
-.btn-small-blue {
-  background-color: $blue;
-  &:hover {
-    background-color: $darkblue;
-  }
-}
-
-.btn-small-red {
-  background-color: $red;
-  &:hover {
-    background-color: $darkred;
-  }
-}
-
-.btn-small-gray {
-  background-color: #acacac;
-  &:hover {
-    background-color: #838383;
-  }
-}
 
 /* ―フォーム */
 label {
@@ -121,6 +108,12 @@ input[type="text"],input[type="email"],input[type="password"],input[type="search
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
+}
+
+select {
+  option[value=""] {
+    display: none;
+  }
 }
 
 .form-item{
@@ -381,12 +374,12 @@ footer {
   position: relative;  /* link_to_show用 */
   h3 {
     margin-left: 1%;
-    width: 35%;
+    width: 40%;
     overflow-wrap: anywhere;
   }
   p {
     margin-right: auto;
-    width: 30%;
+    width: 35%;
     overflow-wrap: anywhere;
   }
   &:hover{
@@ -413,7 +406,7 @@ footer {
   margin-top: 20px;
   h3 {
     margin-left: 1%;
-    width: 35%;
+    width: 40%;
     font-size: 1rem;
     height: 40px;
     display: flex;

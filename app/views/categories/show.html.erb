@@ -2,7 +2,7 @@
 <h2 class="title"><%= @category.name %>（<%= @category.passwords.count %>）</h2>
 <div class="main-btns">
   <% unless @category.name == "未分類" %>
-    <%= link_to "カテゴリー名変更", edit_category_path(@category), method: :get, class: "btn btn-blue" %>
+    <%= link_to "カテゴリー名変更", edit_category_path(@category), method: :get, class: "btn btn-gray" %>
   <% end %>
   <%= link_to "＋パスワード追加", new_password_path(from: params[:id]), class: "btn btn-blue" %>
 </div>
@@ -10,7 +10,7 @@
 <div class="index-tools">
   <%= form_with(url: category_path(@category), local: true, method: :get, class:"search_form") do |f| %>
     <%= f.search_field(:word, value: @word, placeholder: "タイトルで検索") %>
-    <%= f.submit "検索", name: nil, class: "btn-small btn-small-blue" %>
+    <%= f.submit "検索", name: nil, class: "btn-small btn-blue" %>
   <% end %>
   <%= form_with(url: category_url(@category), local: true, method: :get) do |f| %>
     <%= f.hidden_field :word, value: params[:word] %>
@@ -38,8 +38,8 @@
       <%= link_to "", password, class: "link_to_show" %>
       <h3><%= password.title %></h3>
       <p><%= password.account %></p>
-      <%= link_to "編集", edit_password_path(password), class: "btn-small btn-small-blue" %>
-      <%= link_to "削除", password, class: "btn-small btn-small-red",
+      <%= link_to "編集", edit_password_path(password), class: "btn-small btn-blue" %>
+      <%= link_to "削除", password, class: "btn-small btn-red",
         data: { "turbo-method": :delete, turbo_confirm: "本当に削除しますか？" } %>
     </li>
   <% end %>
