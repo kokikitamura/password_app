@@ -1,10 +1,11 @@
 user = User.create!(email: "aaaa@aaa.com",
-                    password:              "aaaaaa",
+                    password: "aaaaaa",
                     password_confirmation: "aaaaaa")
 
-user.categories.create!(name: "AAA")
-user.categories.create!(name: "BBB")
-user.categories.create!(name: "CCC")
+user.categories.create!(name: "あああ")
+user.categories.create!(name: "いいい")
+user.categories.create!(name: "ううう")
+user.categories.create!(name: "未分類")
 
 100.times do |n|
   title  = "example-#{n+1}"
