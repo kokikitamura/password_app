@@ -1,7 +1,9 @@
-<% provide(:title, "パスワード詳細") %>
-<h2 class="title"><%= @category.name %></h2>
-<%= link_to "＋パスワード追加", new_password_path(from: params[:id]), class: "btn btn-blue" %>
-<%= link_to "カテゴリー名変更", edit_category_path(@category), method: :get, class: "btn btn-blue" %>
+<% provide(:title, @category.name) %>
+<h2 class="title"><%= @category.name %>（<%= @category.passwords.count %>）</h2>
+<div class="main-btns">
+  <%= link_to "カテゴリー名変更", edit_category_path(@category), method: :get, class: "btn btn-blue" %>
+  <%= link_to "＋パスワード追加", new_password_path(from: params[:id]), class: "btn btn-blue" %>
+</div>
 
 <div class="index-tools">
   <%= form_with(url: category_path(@category), local: true, method: :get, class:"search_form") do |f| %>
@@ -11,14 +13,14 @@
   <%= form_with(url: category_url(@category), local: true, method: :get) do |f| %>
     <%= f.hidden_field :word, value: params[:word] %>
     <div class="select-box sort-select">
-      <%= f.select :sort_key, options_for_select({作成日が新しい順: "created_latest", 作成日が古い順: "created_old",\
-        更新日が新しい順: "updated_latest", 更新日が古い順: "updated_old"}, params[:sort_key]),\
+      <%= f.select :sort_key, options_for_select({作成日が新しい順: "created_latest", 作成日が古い順: "created_old",
+        更新日が新しい順: "updated_latest", 更新日が古い順: "updated_old"}, params[:sort_key]),
         {}, {onchange: "this.form.submit()"} %>
     </div>
   <% end %>
   <%= form_with(local: true, method: :get) do |f| %>
     <div class="select-box sort-select">
-        <%= f.select :category_id, Category.where(user_id: current_user.id).map{|o| [o.name, category_path(o)]},
+        <%= f.select :category_id, Category.where(user_id: current_user.id).map{|o| [o.name, category_path(o)]}.unshift(["すべて", passwords_path]),
           { include_blank: "カテゴリー選択" }, {onchange: "location.href=value;"}%>
     </div>
   <% end %>

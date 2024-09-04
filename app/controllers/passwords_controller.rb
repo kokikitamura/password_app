@@ -35,6 +35,8 @@ class PasswordsController < ApplicationController
 
   def show
     @password = Password.find(params[:id])
+    session[:before_show].clear
+    session[:before_show] = request.referer
   end
 
   def new
@@ -53,13 +55,25 @@ class PasswordsController < ApplicationController
 
   def edit
     @password = Password.find(params[:id])
+    session[:before_edit].clear
+    session[:before_edit] = request.referer
   end
 
   def update
     @password = Password.find(params[:id])
     if @password.update(password_params)
       flash[:success] = "更新しました"
-      redirect_to @password
+      if session[:before_show]&.match(/categories/)
+        redirect_to session[:before_show]
+        session[:before_show].clear
+      elsif session[:before_edit]&.match(/categories/)
+        redirect_to session[:before_edit]
+        session[:before_edit].clear
+      else
+        redirect_to passwords_path
+        session[:before_show].clear
+        session[:before_edit].clear
+      end
     else
       render 'edit', status: :unprocessable_entity
     end

@@ -425,7 +425,7 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 50px 0 20px;
+  margin: 20px 0 20px;
     .btn {
       margin: 0;
     }
@@ -442,6 +442,13 @@ footer {
 .sort-select {
   width: 200px;
 }
+
+.main-btns {
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+}
+
 
 /* パスワードジェネレーター */
 .password-generator {

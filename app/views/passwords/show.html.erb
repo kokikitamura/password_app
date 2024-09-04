@@ -1,4 +1,4 @@
-<% provide(:title, "パスワード詳細") %>
+<% provide(:title, @password.title) %>
 <h2 class="title"><%= @password.title %></h2>
 <div class="show-item">
   <h3>アカウント名</h3>
@@ -16,7 +16,7 @@
 </div>
 <div class="show-item">
   <h3>カテゴリー</h3>
-  <% if !@password.category.nil? %>
+  <% if @password.category %>
     <p><%= link_to @password.category.name, @password.category %></p>
   <% end %>
 </div>
