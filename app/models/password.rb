@@ -1,7 +1,7 @@
 class Password < ApplicationRecord
   encrypts :account, :pass
   belongs_to :user
-  belongs_to :category, optional: true
+  belongs_to :category
   #default_scope -> { order(created_at: :desc) }
   scope :created_latest, -> {order(created_at: :desc)}
   scope :created_old, -> {order(created_at: :asc)}

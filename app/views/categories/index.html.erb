@@ -9,9 +9,11 @@
     <li class="category-list">
     <%= link_to "", category, class: "link_to_show" %>
       <p><%= category.name %>（<%= category.passwords.count %>）</p>
-      <%= link_to "編集", edit_category_path(category), class: "btn-small btn-small-blue" %>
-      <%= link_to "削除", category, class: "btn-small btn-small-red",
-        data: { "turbo-method": :delete, turbo_confirm: "本当に削除しますか？" } %>
+      <% unless category.name == "未分類" %>
+        <%= link_to "編集", edit_category_path(category), class: "btn-small btn-small-blue" %>
+        <%= link_to "削除", category, class: "btn-small btn-small-red",
+          data: { "turbo-method": :delete, turbo_confirm: "本当に削除しますか？" } %>
+      <% end %>
     </li>
   <% end %>
 </ul>

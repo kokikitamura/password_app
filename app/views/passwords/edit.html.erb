@@ -41,8 +41,7 @@
     <div class="form-item">
       <%= f.label :category_id,"カテゴリー" %>
       <div class="select-box">
-        <%= f.select :category_id, Category.where(user_id: current_user.id).map{|o| [o.name, o.id]},
-          { include_blank: "------" } %>
+        <%= f.select :category_id, Category.where(user_id: current_user.id).map{|o| [o.name, o.id]} %>
       </div>
     </div>
     <div class="form-item">

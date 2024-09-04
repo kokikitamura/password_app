@@ -35,19 +35,23 @@ class PasswordsController < ApplicationController
 
   def show
     @password = Password.find(params[:id])
-    session[:before_show].clear
+    session[:before_show]&.clear
     session[:before_show] = request.referer
   end
 
   def new
     @password = Password.new
+    session[:before_new] = request.referer
   end
 
   def create
     @password = current_user.passwords.build(password_params)
+    if @password.category.nil?
+      @password.category = current_user.categories.find_by(name: "未分類")
+    end
     if @password.save
       flash[:success] = "追加しました"
-      redirect_to passwords_path
+      redirect_to session[:before_new]
     else
       render 'new', status: :unprocessable_entity
     end
@@ -55,7 +59,7 @@ class PasswordsController < ApplicationController
 
   def edit
     @password = Password.find(params[:id])
-    session[:before_edit].clear
+    session[:before_edit]&.clear
     session[:before_edit] = request.referer
   end
 

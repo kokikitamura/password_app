@@ -17,6 +17,7 @@ class UsersController < ApplicationController
       log_in @user
       flash[:success] = "登録が完了しました"
       redirect_to passwords_path
+      @user.categories.create(name: "未分類")
     else
       render 'new', status: :unprocessable_entity
     end

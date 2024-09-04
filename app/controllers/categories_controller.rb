@@ -62,9 +62,16 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
-    Category.find(params[:id]).destroy
-    flash[:notice] = "削除しました"
-    redirect_to categories_path, status: :see_other
+    @category = Category.find(params[:id])
+    if @category.name == "未分類"
+      redirect_to categories_path, status: :see_other
+    else
+      uncategorized_category = current_user.categories.find_by(name: "未分類")
+      @category.passwords.update_all(category_id: uncategorized_category.id)
+      @category.destroy
+      flash[:notice] = "削除しました"
+      redirect_to categories_path, status: :see_other
+    end
   end
 
   private

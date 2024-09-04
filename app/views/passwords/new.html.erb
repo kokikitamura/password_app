@@ -42,12 +42,12 @@
       <%= f.label :category_id,"カテゴリー" %>
       <div class="select-box">
         <% if params[:from] %>
-          <%= f.select :category_id, options_for_select(Category.where(user_id: current_user.id).map{|o| [o.name, o.id]},\
-            params[:from]),
+          <%= f.select :category_id, options_for_select(Category.where(user_id: current_user.id)
+            .where.not(name: "未分類").map{|o| [o.name, o.id]}, params[:from]),
           { include_blank: "------" } %>
         <% else %>
-          <%= f.select :category_id, Category.where(user_id: current_user.id).map{|o| [o.name, o.id]},
-          { include_blank: "------" } %>
+          <%= f.select :category_id, Category.where(user_id: current_user.id)
+          .where.not(name: "未分類").map{|o| [o.name, o.id]}, { include_blank: "------" } %>
         <% end %>
       </div>
     </div>

@@ -1,7 +1,9 @@
 <% provide(:title, @category.name) %>
 <h2 class="title"><%= @category.name %>（<%= @category.passwords.count %>）</h2>
 <div class="main-btns">
-  <%= link_to "カテゴリー名変更", edit_category_path(@category), method: :get, class: "btn btn-blue" %>
+  <% unless @category.name == "未分類" %>
+    <%= link_to "カテゴリー名変更", edit_category_path(@category), method: :get, class: "btn btn-blue" %>
+  <% end %>
   <%= link_to "＋パスワード追加", new_password_path(from: params[:id]), class: "btn btn-blue" %>
 </div>
 
