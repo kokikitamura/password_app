@@ -176,7 +176,7 @@ textarea {
 /* ―タイトル */
 .title {
   text-align: center;
-  margin: 40px 0;
+  margin: 20px 0;
 }
 
 /* ―flashメッセージ*/
@@ -381,7 +381,9 @@ footer {
   justify-content: space-between;
   border-top: 1px solid #ccc;
   align-items: center;
+  min-height: 3rem;
   padding: 7px 0;
+  gap: 12px;
   &:hover{
     background: #ddd;
   }
@@ -392,10 +394,11 @@ footer {
   width: 100%;
   height: 100%;
   align-items: center;
+  gap: 12px;
   position: relative;  /* link_to_show用 */
   h3 {
     font-size: 1rem;
-    margin-left: 1%;
+    margin-left: 10px;
     width: 55%;
     overflow-wrap: anywhere;
   }
@@ -425,10 +428,7 @@ footer {
   margin-right: 10px;
   display: flex;
   justify-content: flex-end;
-  gap: 10px;
-  @include media(tb){
-    display: none;
-  }
+  gap: 20px;
 }
 
 .link_to_show {
@@ -524,9 +524,9 @@ input[type="number"] {
   margin: auto;
   margin-bottom: 20px;
   h3 {
-    color: #8f8f8f;
+    color: #6d6d6d;
     font-weight: normal;
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
   p {
     word-break: break-all;
@@ -546,7 +546,6 @@ input[type="number"] {
 .show-text {
   display: flex;
   flex-direction: column;
-  
   gap: 5px;
 }
 
@@ -556,29 +555,41 @@ input[type="number"] {
 /* カテゴリー一覧 */
 .category-list{
   display: flex;
-  width: 50%;
+  min-height: 3rem;
+  width: clamp(300px,70%,600px);
   margin: auto;
   border-top: 1px solid #ccc;
   align-items: center;
-  gap: 1%;
-  padding: 10px 0;
+  padding: 7px 0;
+  gap: 12px;
   position: relative;  /* link_to_show用 */
   p {
-    margin-left: 1%;
     margin-right: auto;
-    width: 30%;
+    margin-left: 10px;
     overflow-wrap: anywhere;
   }
   &:hover{
     background: #ddd;
   }
-  .btn-small:last-child {
-    margin-right: 10px;
-  }
 }
 
 
-
+.category-name {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  position: relative;  /* link_to_show用 */
+  p {
+    overflow-wrap: anywhere;
+  }
+  @include media(tb){
+    flex-direction: column;
+    p {
+      overflow-wrap: anywhere;
+    }
+  }
+}
 
 
 

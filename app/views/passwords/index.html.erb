@@ -1,7 +1,7 @@
 <% provide(:title, 'すべてのパスワード') %>
 <h2 class="title">すべてのパスワード（<%= @all_passwords.count %>）</h2>
 <div class="main-btns">
-  <%= link_to "＋パスワード追加", new_password_path, class: "btn btn-blue" %>
+  <%= link_to "＋追加", new_password_path, class: "btn btn-blue" %>
 </div>
 
 <div class="index-tools">
@@ -35,9 +35,14 @@
         <%= link_to "", password, class: "link_to_show" %>
       </div>
       <div class="edit-and-delete-btns">
-        <%= link_to "編集", edit_password_path(password), class: "btn-small btn-blue" %>
-        <%= link_to "削除", password, class: "btn-small btn-red",
-          data: { "turbo-method": :delete, turbo_confirm: "本当に削除しますか？" } %>
+        <%= link_to  edit_password_path(password) do %>
+          <i class="fa-solid fa-pen-to-square fa-lg" style="color:gray;"
+          onMouseOut="this.style.color='gray';" onMouseOver="this.style.color='#02448f';"></i>
+        <% end %>
+        <%= link_to password, data: { "turbo-method": :delete, turbo_confirm: "本当に削除しますか？パスワードは削除されません。" } do %>
+          <i class="fa-solid fa-trash-can fa-lg" style="color:gray;"
+          onMouseOut="this.style.color='gray';" onMouseOver="this.style.color='#e01428';"></i>
+        <% end %>
       </div>
     </li>
   <% end %>
