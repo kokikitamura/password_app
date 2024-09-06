@@ -25,19 +25,20 @@
   <% end %>
 </div>
 
-<div class="side-of-the-table">
-  <h3>タイトル</h3>
-  <h3>アカウント名</h3>
-</div>
+
 <ul class="passwords">
   <% @passwords.each do |password| %>
     <li class="password-list">
-      <%= link_to "", password, class: "link_to_show" %>
-      <h3><%= password.title %></h3>
-      <p><%= password.account %></p>
-      <%= link_to "編集", edit_password_path(password), class: "btn-small btn-blue" %>
-      <%= link_to "削除", password, class: "btn-small btn-red",
-        data: { "turbo-method": :delete, turbo_confirm: "本当に削除しますか？" } %>
+      <div class="password-title-and-account">
+        <h3><%= password.title %></h3>
+        <p><%= password.account %></p>
+        <%= link_to "", password, class: "link_to_show" %>
+      </div>
+      <div class="edit-and-delete-btns">
+        <%= link_to "編集", edit_password_path(password), class: "btn-small btn-blue" %>
+        <%= link_to "削除", password, class: "btn-small btn-red",
+          data: { "turbo-method": :delete, turbo_confirm: "本当に削除しますか？" } %>
+      </div>
     </li>
   <% end %>
 </ul>

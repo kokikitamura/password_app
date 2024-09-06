@@ -1,32 +1,42 @@
 <% provide(:title, @password.title) %>
 <h2 class="title"><%= @password.title %></h2>
 <div class="show-item">
-  <h3>アカウント名</h3>
-  <p id="account"><%= @password.account %></p>
+  <div class="show-text">
+    <h3>アカウント名</h3>
+    <p id="account"><%= @password.account %></p>
+  </div>
   <% if !@password.account.empty? %>
     <button id="account-copy" class="btn-small btn-gray">コピー</button>
   <% end %>
 </div>
 <div class="show-item">
-  <h3>パスワード</h3>
-  <p id="pass"><%= @password.pass %></p>
+  <div class="show-text">
+    <h3>パスワード</h3>
+    <p id="pass"><%= @password.pass %></p>
+  </div>
   <% if !@password.pass.empty? %>
     <button id="pass-copy" class="btn-small btn-gray">コピー</button>
   <% end %>
 </div>
 <div class="show-item">
-  <h3>カテゴリー</h3>
-  <% if @password.category %>
-    <p><%= link_to @password.category.name, @password.category %></p>
-  <% end %>
+  <div class="show-text">
+    <h3>カテゴリー</h3>
+    <% if @password.category %>
+      <p><%= link_to @password.category.name, @password.category %></p>
+    <% end %>
+  </div>
 </div>
 <div class="show-item">
-  <h3>URL</h3>
-  <p><%= @password.url %></p>
+  <div class="show-text">
+    <h3>URL</h3>
+    <p><%= @password.url %></p>
+  </div>
 </div>
 <div class="show-item">
-  <h3>メモ</h3>
-  <p><%= @password.memo %></p>
+  <div class="show-text">
+    <h3>メモ</h3>
+    <p><%= @password.memo %></p>
+  </div>
 </div>
 <div class="btn-wrapper">
   <%= link_to "編集", edit_password_path(@password), method: :get, class: "btn btn-blue" %>
