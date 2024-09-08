@@ -10,6 +10,6 @@ class CreatePasswords < ActiveRecord::Migration[7.0]
 
       t.timestamps
     end
-    add_index :passwords, [:user_id, :created_at, :upadted_at]
+    add_index :passwords, [:user_id, :created_at, :updated_at]
   end
 end
