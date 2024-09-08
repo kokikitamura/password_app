@@ -2,7 +2,7 @@
 <h2 class="title"><%= @category.name %>（<%= @category.passwords.count %>）</h2>
 <div class="main-btns">
   <% unless @category.name == "未分類" %>
-    <%= link_to "カテゴリー名変更", edit_category_path(@category), method: :get, class: "btn btn-gray" %>
+    <%= link_to "カテゴリー編集", edit_category_path(@category), method: :get, class: "btn btn-gray" %>
   <% end %>
   <%= link_to "＋追加", new_password_path(from: params[:id]), class: "btn btn-blue" %>
 </div>
@@ -50,4 +50,7 @@
 </ul>
 <div class="pagenate">
   <%= paginate @passwords %>
+</div>
+<div id="page_top">
+  <a href="#"></a>
 </div>

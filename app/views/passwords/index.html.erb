@@ -39,7 +39,7 @@
           <i class="fa-solid fa-pen-to-square fa-lg" style="color:gray;"
           onMouseOut="this.style.color='gray';" onMouseOver="this.style.color='#02448f';"></i>
         <% end %>
-        <%= link_to password, data: { "turbo-method": :delete, turbo_confirm: "本当に削除しますか？パスワードは削除されません。" } do %>
+        <%= link_to password, data: { "turbo-method": :delete, turbo_confirm: "本当に削除しますか？" } do %>
           <i class="fa-solid fa-trash-can fa-lg" style="color:gray;"
           onMouseOut="this.style.color='gray';" onMouseOver="this.style.color='#e01428';"></i>
         <% end %>
@@ -49,4 +49,7 @@
 </ul>
 <div class="pagenate">
   <%= paginate @passwords %>
+</div>
+<div id="page_top">
+  <a href="#"></a>
 </div>

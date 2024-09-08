@@ -312,7 +312,7 @@ textarea {
   content: "";
   width: 100%;
   height: 0.5px;
-  background-color: $white;
+  background-color: #474747;
   position: absolute;
   top: 0;
   left: 0;
@@ -329,6 +329,97 @@ textarea {
   width: 100%;
   text-align: center;
 }
+
+.dropdown-list a::after {
+  content: none; /* ラインを表示しない */
+}
+
+.hamburger {
+  display: none;
+}
+
+@include media(tb){
+  .nav {
+    display: none;
+  }
+  .hamburger {
+    display: block;
+  }
+
+  .hamburger-menu {
+    width: 50px;
+    height: 50px;
+    position: relative;
+    border: none;
+    background: transparent;
+    appearance: none;
+    padding: 0;
+    cursor: pointer;
+  }
+  .hamburger-menu-bar {
+    display: inline-block;
+    width: 44%;
+    height: 2px;
+    background: $white;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: .5s;
+  }
+  .hamburger-menu-bar:first-child {
+    top: 16px;
+  }
+  .hamburger-menu-bar:nth-child(2) {
+    top: 24px;
+  }
+  .hamburger-menu-bar:last-child {
+    top: 32px;
+  }
+  .hamburger-menu--open .hamburger-menu-bar {
+    top: 50%;
+  }
+  .hamburger-menu--open .hamburger-menu-bar:first-child {
+    transform: translateX(-50%) translateY(-50%) rotate(45deg);
+  }
+  .hamburger-menu--open .hamburger-menu-bar:last-child {
+    transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+  }
+  .hamburger-menu--open .hamburger-menu-bar:nth-child(2) {
+    display: none;
+  }
+  .hamburger-nav {
+    display: none;
+    background: $darkblue;
+    position: absolute;
+    top: 80px;
+    right: 0;
+    width: 100%;
+    z-index: 100;
+  }
+  .hamburger-lists {
+    text-align: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .hamburger-list {
+    border-bottom: solid 1px #474747;
+  }
+
+  .hamburger-link {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 20px 0;
+    transition: .5s;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .hamburger-link:hover {
+      background: #333;
+    }
+  }
+}
+
 
 
 /* フッター */
@@ -480,6 +571,47 @@ footer {
   }
 }
 
+
+
+#page_top {
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  right: 50px;
+  bottom: 30px;
+  background: $blue;
+  opacity: 0.6;
+  border-radius: 50%;
+  z-index: 10;
+  &:hover{
+    opacity: 0.8;
+  }
+}
+
+#page_top a {
+  position: relative;
+  display: block;
+  width: 50px;
+  height: 50px;
+  text-decoration: none;
+}
+
+#page_top a::before {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  content: '\f102';
+  font-size: 25px;
+  color: #fff;
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  text-align: center;
+}
 
 /* パスワードジェネレーター */
 .password-generator {
