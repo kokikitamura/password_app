@@ -42,8 +42,8 @@ function setupPasswordGenerator() {
 $(document).on('click', '#pass-copy', function(){
   // コピーする文章の取得
   let text = $("#pass").text();
-  // Copyの文字を変更
-  $("#pass-copy").text("コピー済");
+  // copyの文字をcopiedに変更
+  $("#pass-copy").html("<i class='fa-regular fa-copy' style='color: #ffffff;'></i> copied");
 
   if (navigator.clipboard == undefined) {
       window.clipboardData.setData("Text", text);
@@ -55,7 +55,7 @@ $(document).on('click', '#pass-copy', function(){
 //アカウント名のコピーボタン
 $(document).on('click', '#account-copy', function(){
   let text = $("#account").text();
-  $("#account-copy").text("コピー済");
+  $("#account-copy").html("<i class='fa-regular fa-copy' style='color: #ffffff;'></i> copied");
 
   if (navigator.clipboard == undefined) {
       window.clipboardData.setData("Text", text);
@@ -95,6 +95,7 @@ $(document).on('click', '#account-copy', function(){
 //   });
 // });
 
+//ハンバーガーメニュー
 document.addEventListener("turbo:load", setupHamburgerMenu);
 document.addEventListener("turbo:render", setupHamburgerMenu);
 

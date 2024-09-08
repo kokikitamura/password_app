@@ -4,13 +4,17 @@
   <% unless @category.name == "未分類" %>
     <%= link_to "カテゴリー編集", edit_category_path(@category), method: :get, class: "btn btn-gray" %>
   <% end %>
-  <%= link_to "＋追加", new_password_path(from: params[:id]), class: "btn btn-blue" %>
+  <%= link_to new_password_path, class: "btn btn-blue" do %>
+    <i class="fa-solid fa-plus"></i> 追加
+  <% end %>
 </div>
 
 <div class="index-tools">
   <%= form_with(url: category_path(@category), local: true, method: :get, class:"search_form") do |f| %>
     <%= f.search_field(:word, value: @word, placeholder: "タイトルで検索") %>
-    <%= f.submit "検索", name: nil, class: "btn-small btn-blue" %>
+    <%= button_tag type: "submit", name: nil, class: "btn-small btn-blue" do %>
+      <i class="fa-solid fa-magnifying-glass"></i>
+    <% end %>
   <% end %>
   <%= form_with(url: category_url(@category), local: true, method: :get) do |f| %>
     <%= f.hidden_field :word, value: params[:word] %>
@@ -36,13 +40,11 @@
         <%= link_to "", password, class: "link_to_show" %>
       </div>
       <div class="edit-and-delete-btns">
-        <%= link_to  edit_password_path(password) do %>
-          <i class="fa-solid fa-pen-to-square fa-lg" style="color:gray;"
-          onMouseOut="this.style.color='gray';" onMouseOver="this.style.color='#02448f';"></i>
+        <%= link_to edit_password_path(password), class: "btn-small btn-blue" do %>
+          <i class="fa-solid fa-pen-to-square" style="color:#ffffff;"></i>
         <% end %>
-        <%= link_to password, data: { "turbo-method": :delete, turbo_confirm: "本当に削除しますか？パスワードは削除されません。" } do %>
-          <i class="fa-solid fa-trash-can fa-lg" style="color:gray;"
-          onMouseOut="this.style.color='gray';" onMouseOver="this.style.color='#e01428';"></i>
+        <%= link_to password, class: "btn-small btn-red",data: { "turbo-method": :delete, turbo_confirm: "本当に削除しますか？" } do %>
+          <i class="fa-solid fa-trash-can" style="color:#ffffff;"></i>
         <% end %>
       </div>
     </li>

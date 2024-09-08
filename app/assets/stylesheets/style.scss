@@ -511,15 +511,12 @@ footer {
   }
 }
 
-
-
-
 .edit-and-delete-btns {
   width: fit-content;
   margin-right: 10px;
   display: flex;
   justify-content: flex-end;
-  gap: 20px;
+  gap: 10px;
 }
 
 .link_to_show {
@@ -540,7 +537,7 @@ footer {
   @include media(tb){
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
   }
   .btn {
     margin: 0;

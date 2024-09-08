@@ -11,8 +11,8 @@
       <%= f.submit "更新", class: "btn btn-blue" %>
     </div>
     <div class="btn-wrapper">
-      <%= link_to "削除", @category, class: "btn btn-red",
-          data: { "turbo-method": :delete, turbo_confirm: "本当に削除しますか？" } %>
+      <%= link_to "カテゴリー削除", @category, class: "btn btn-red",
+          data: { "turbo-method": :delete, turbo_confirm: "本当に削除しますか？パスワードは削除されません。" } %>
     </div>
   <% end %>
 </div>

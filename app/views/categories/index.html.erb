@@ -2,7 +2,9 @@
 <h2 class="title">すべてのカテゴリー（<%= @categories.count %>）</h2>
 
 <div class="btn-wrapper">
-  <%= link_to "＋カテゴリー追加", new_category_path, class: "btn btn-blue" %>
+  <%= link_to new_category_path, class: "btn btn-blue" do %>
+    <i class="fa-solid fa-plus"></i> カテゴリー追加
+  <% end %>
 </div>
 <ul class="">
   <% @categories.each do |category| %>

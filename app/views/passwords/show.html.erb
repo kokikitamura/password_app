@@ -6,7 +6,7 @@
     <p id="account"><%= @password.account %></p>
   </div>
   <% if !@password.account.empty? %>
-    <button id="account-copy" class="btn-small btn-gray">コピー</button>
+    <button id="account-copy" class="btn-small btn-gray"><i class="fa-regular fa-copy" style="color: #ffffff;"></i> copy</button>
   <% end %>
 </div>
 <div class="show-item">
@@ -15,7 +15,7 @@
     <p id="pass"><%= @password.pass %></p>
   </div>
   <% if !@password.pass.empty? %>
-    <button id="pass-copy" class="btn-small btn-gray">コピー</button>
+    <button id="pass-copy" class="btn-small btn-gray"><i class="fa-regular fa-copy" style="color: #ffffff;"></i> copy</button>
   <% end %>
 </div>
 <div class="show-item">
