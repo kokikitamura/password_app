@@ -4,7 +4,7 @@
   <% unless @category.name == "未分類" %>
     <%= link_to "カテゴリー編集", edit_category_path(@category), method: :get, class: "btn btn-gray" %>
   <% end %>
-  <%= link_to new_password_path, class: "btn btn-blue" do %>
+  <%= link_to new_password_path(category: params[:id]), class: "btn btn-blue" do %>
     <i class="fa-solid fa-plus"></i> 追加
   <% end %>
 </div>
