@@ -5,7 +5,7 @@
 
 ## URL
 https://passward.onrender.com/
-#### テストユアカウント
+#### テストアカウント
 * メールアドレス：test_1@test.com
 * パスワード：testuser1
 
