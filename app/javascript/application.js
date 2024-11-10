@@ -4,7 +4,7 @@ import "controllers"
 import jquery from "jquery"
 window.$ = jquery
 
-
+//パスワードジェネレーター
 document.addEventListener("turbo:load", setupPasswordGenerator);
 document.addEventListener("turbo:render", setupPasswordGenerator);
 
@@ -63,37 +63,6 @@ $(document).on('click', '#account-copy', function(){
       navigator.clipboard.writeText(text);
   }
 });
-
-//ヘッダーのドロップダウン
-//$(document).on('turbolinks:load', function() {
-// $(function() {
-//   $(".nav").children("li").hover(function(){
-//     $(".dropdown-lists").stop().slideToggle(100);
-//   });
-// });
-// });
-// $(document).on('turbolinks:load', function() {
-//   $(function () {
-//     $('#js-hamburger-menu, .hamburger-link').on('click', function () {
-//       $('.hamburger-nav').slideToggle(200)
-//       $('.hamburger-menu').toggleClass('hamburger-menu--open')
-//     });
-//   });
-// });
-
-// document.addEventListener("turbo:load", function() {
-//   $('#js-hamburger-menu, .hamburger-link').on('click', function () {
-//     $('.hamburger-nav').slideToggle(200)
-//     $('.hamburger-menu').toggleClass('hamburger-menu--open')
-//   });
-// });
-
-// document.addEventListener("turbo:render", function() {
-//   $('#js-hamburger-menu, .hamburger-link').on('click', function () {
-//     $('.hamburger-nav').slideToggle(200)
-//     $('.hamburger-menu').toggleClass('hamburger-menu--open')
-//   });
-// });
 
 //ハンバーガーメニュー
 document.addEventListener("turbo:load", setupHamburgerMenu);
