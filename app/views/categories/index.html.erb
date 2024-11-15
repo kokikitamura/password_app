@@ -6,7 +6,7 @@
     <i class="fa-solid fa-plus"></i> カテゴリー追加
   <% end %>
 </div>
-<ul class="">
+<ul>
   <% @categories.each do |category| %>
     <li class="category-list">
       <div class="category-name">
@@ -18,7 +18,7 @@
           <%= link_to edit_category_path(category), class: "btn-small btn-blue" do %>
             <i class="fa-solid fa-pen-to-square" style="color:#ffffff;"></i>
           <% end %>
-          <%= link_to category, class: "btn-small btn-red",data: { "turbo-method": :delete, turbo_confirm: "本当に削除しますか？パスワードは削除されません。" } do %>
+          <%= link_to category, class: "btn-small btn-red",data: { "turbo-method": :delete, turbo_confirm: "カテゴリーを削除してもよいですか？パスワードは削除されません。" } do %>
             <i class="fa-solid fa-trash-can" style="color:#ffffff;"></i>
           <% end %>
         <% end %>
