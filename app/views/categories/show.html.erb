@@ -1,15 +1,14 @@
 <% provide(:title, @category.name) %>
 <h2 class="title"><%= @category.name %>（<%= @category.passwords.count %>）</h2>
+
 <div class="main-btns">
-  <% unless @category.name == "未分類" %>
-    <%= link_to "カテゴリー編集", edit_category_path(@category), method: :get, class: "btn btn-gray" %>
-  <% end %>
+  <button id="filter-btn" class="btn btn-gray">フィルター</button>
   <%= link_to new_password_path(category: params[:id]), class: "btn btn-blue" do %>
     <i class="fa-solid fa-plus"></i> 追加
   <% end %>
 </div>
 
-<div class="index-tools">
+<div class="option">
   <%= form_with(url: category_path(@category), local: true, method: :get, class:"search_form") do |f| %>
     <%= f.search_field(:word, value: @word, placeholder: "タイトルで検索") %>
     <%= button_tag type: "submit", name: nil, class: "btn-small btn-blue" do %>

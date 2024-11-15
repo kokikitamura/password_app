@@ -15,13 +15,11 @@
       </div>
       <div class="edit-and-delete-btns">
         <% unless category.name == "未分類" %>
-          <%= link_to  edit_category_path(category) do %>
-            <i class="fa-solid fa-pen-to-square fa-lg" style="color:gray;"
-            onMouseOut="this.style.color='gray';" onMouseOver="this.style.color='#02448f';"></i>
+          <%= link_to edit_category_path(category), class: "btn-small btn-blue" do %>
+            <i class="fa-solid fa-pen-to-square" style="color:#ffffff;"></i>
           <% end %>
-          <%= link_to  category, data: { "turbo-method": :delete, turbo_confirm: "本当に削除しますか？パスワードは削除されません。" } do %>
-            <i class="fa-solid fa-trash-can fa-lg" style="color:gray;"
-            onMouseOut="this.style.color='gray';" onMouseOver="this.style.color='#e01428';"></i>
+          <%= link_to category, class: "btn-small btn-red",data: { "turbo-method": :delete, turbo_confirm: "カテゴリーを削除してもよいですか？パスワードは削除されません。" } do %>
+            <i class="fa-solid fa-trash-can" style="color:#ffffff;"></i>
           <% end %>
         <% end %>
       </div>

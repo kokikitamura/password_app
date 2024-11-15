@@ -1,12 +1,14 @@
 <% provide(:title, 'すべてのパスワード') %>
 <h2 class="title">すべてのパスワード（<%= @all_passwords.count %>）</h2>
+
 <div class="main-btns">
+  <button id="filter-btn" class="btn btn-gray"><i class="fa-solid fa-gear"></i> オプション</button>
   <%= link_to new_password_path, class: "btn btn-blue" do %>
     <i class="fa-solid fa-plus"></i> 追加
   <% end %>
 </div>
 
-<div class="index-tools">
+<div class="option">
   <%= form_with(url: passwords_path, local: true, method: :get, class:"search_form") do |f| %>
     <%= f.search_field(:word, value: @word, placeholder: "タイトルで検索") %>
     <%= button_tag type: "submit", name: nil, class: "btn-small btn-blue" do %>
@@ -16,14 +18,18 @@
   <%= form_with(url: passwords_url, local: true, method: :get) do |f| %>
     <%= f.hidden_field :word, value: params[:word] %>
     <div class="select-box sort-select">
-      <%= f.select :sort_key, options_for_select({作成日が新しい順: "created_latest", 作成日が古い順: "created_old",\
-        更新日が新しい順: "updated_latest", 更新日が古い順: "updated_old"}, params[:sort_key]),\
+      <%= f.select :sort_key, options_for_select({
+        作成日が新しい順: "created_latest",
+        作成日が古い順: "created_old",
+        更新日が新しい順: "updated_latest",
+        更新日が古い順: "updated_old"}, params[:sort_key]),
         {}, {onchange: "this.form.submit()"} %>
     </div>
   <% end %>
   <%= form_with(local: true, method: :get) do |f| %>
     <div class="select-box sort-select">
-        <%= f.select :category_id, Category.where(user_id: current_user.id).map{|o| [o.name, category_path(o)]}.unshift(["すべて", passwords_path]),
+        <%= f.select :category_id, Category.where(user_id: current_user.id)
+          .map{|o| [o.name, category_path(o)]}.unshift(["すべて", passwords_path]),
           { include_blank: "カテゴリー選択" }, {onchange: "location.href=value;"}%>
     </div>
   <% end %>
@@ -40,10 +46,11 @@
       </div>
       <div class="edit-and-delete-btns">
         <%= link_to edit_password_path(password), class: "btn-small btn-blue" do %>
-          <i class="fa-solid fa-pen-to-square" style="color:#ffffff;"></i>
+          <i class="fa-solid fa-pen" style="color:#ffffff;"></i>
         <% end %>
-        <%= link_to password, class: "btn-small btn-red",data: { "turbo-method": :delete, turbo_confirm: "本当に削除しますか？" } do %>
-          <i class="fa-solid fa-trash-can" style="color:#ffffff;"></i>
+        <%= link_to password, class: "btn-small btn-red",
+          data: { "turbo-method": :delete, turbo_confirm: "本当に削除しますか？" } do %>
+            <i class="fa-solid fa-trash-can" style="color:#ffffff;"></i>
         <% end %>
       </div>
     </li>

@@ -28,10 +28,8 @@ function setupPasswordGenerator() {
     let includeCapital = $("#include_capital").is(":checked");
     let includeNumbers = $("#include_numbers").is(":checked");
     let includeSymbols = $("#include_symbols").is(":checked");
-
     // パスワード生成
     const password = generatePassword(length, includeCapital, includeNumbers, includeSymbols);
-
     // パスワード入力フォームにセット
     $("#password_field").val(password);
   });
@@ -64,6 +62,7 @@ $(document).on('click', '#account-copy', function(){
   }
 });
 
+
 //ハンバーガーメニュー
 document.addEventListener("turbo:load", setupHamburgerMenu);
 document.addEventListener("turbo:render", setupHamburgerMenu);
@@ -73,4 +72,19 @@ function setupHamburgerMenu() {
     $('.hamburger-nav').slideToggle(200);
     $('.hamburger-menu').toggleClass('hamburger-menu--open');
   });
+}
+
+
+//フィルターオプション
+document.addEventListener("turbo:load", setupOption);
+document.addEventListener("turbo:render", setupOption);
+
+function setupOption() {
+  // スマホの場合のみ
+  if ($(window).width() <= 768) {
+    $('.option').hide();
+    $('#filter-btn').off('click').on('click', function () {
+      $('.option').slideToggle();
+    });
+  }
 }

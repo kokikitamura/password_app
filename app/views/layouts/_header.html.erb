@@ -1,9 +1,14 @@
 <header class="header">
   <div class="container header-container">
-    <h1><%= link_to image_tag("passward_logo.png"), logged_in? ? passwords_path : login_path %></h1>
+    <h1><%= link_to image_tag("passward_logo.png", width: "150"), logged_in? ? passwords_path : login_path %></h1>
     <nav>
       <ul class="nav">
       <% if logged_in? %>
+        <li class="nav-item">
+          <%= link_to new_password_path(category: params[:id]) do %>
+            <i class="fa-solid fa-plus"></i> 追加
+          <% end %>
+        </li>
         <li class="nav-item"><%= link_to "すべてのパスワード", passwords_path %></li>
         <li class="nav-item"><%= link_to "すべてのカテゴリー", categories_path %></li>
         <li class="nav-item" ><%= link_to "アカウント ▼", '#' %>
@@ -17,20 +22,27 @@
         <li class="nav-item"><%= link_to "ログイン", login_path %></li>
       <% end %>
       </ul>
-      <div class="hamburger">
-        <button class="hamburger-menu" id="hamburger-menu">
-          <span class="hamburger-menu-bar"></span>
-          <span class="hamburger-menu-bar"></span>
-          <span class="hamburger-menu-bar"></span>
-        </button>
-        <nav class="hamburger-nav">
-          <ul class="hamburger-lists">
-            <li class="hamburger-list"><%= link_to "すべてのパスワード", passwords_path, class: "hamburger-link" %></li>
-            <li class="hamburger-list"><%= link_to "すべてのカテゴリー", categories_path, class: "hamburger-link" %></li>
-            <li class="hamburger-list"><%= link_to "アカウント情報", current_user, class: "hamburger-link" %></li>
-            <li class="hamburger-list"><%= link_to "ログアウト", logout_path, data: { "turbo-method": :delete }, class: "hamburger-link" %></li>
-          </ul>
-        </nav>
+      <div class="smartphone-nav">
+        <div class="plus-btn">
+          <%= link_to new_password_path(category: params[:id]) do %>
+            <i class="fa-solid fa-plus fa-xl"></i>
+          <% end %>
+        </div>
+        <div class="hamburger">
+          <button class="hamburger-menu" id="hamburger-menu">
+            <span class="hamburger-menu-bar"></span>
+            <span class="hamburger-menu-bar"></span>
+            <span class="hamburger-menu-bar"></span>
+          </button>
+          <nav class="hamburger-nav">
+            <ul class="hamburger-lists">
+              <li class="hamburger-list"><%= link_to "すべてのパスワード", passwords_path, class: "hamburger-link" %></li>
+              <li class="hamburger-list"><%= link_to "すべてのカテゴリー", categories_path, class: "hamburger-link" %></li>
+              <li class="hamburger-list"><%= link_to "アカウント情報", current_user, class: "hamburger-link" %></li>
+              <li class="hamburger-list"><%= link_to "ログアウト", logout_path, data: { "turbo-method": :delete }, class: "hamburger-link" %></li>
+            </ul>
+          </nav>
+        </div>
       </div>
     </nav>
   </div>
