@@ -16,7 +16,6 @@ https://passward.onrender.com/
 
 #### 本番環境
 * Render
-* PostgreSQL
 
 ## ER図
 <img width="400" alt="password_app" src="https://github.com/user-attachments/assets/71951879-97a8-4431-85c6-80511aa91842">
