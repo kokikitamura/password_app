@@ -7,8 +7,10 @@
     <li class="bold">一度削除したアカウントは二度と復元できません。</li>
   </ol>
 </div>
-
 <div class="btn-wrapper">
-  <%= link_to "削除", @user, class: "btn btn-red", data: { "turbo-method": :delete,
+  <%= link_to "削除しない", edit_user_path(@user), class: "btn btn-red" %>
+</div>
+<div class="center">
+  <%= link_to "削除", @user, data: { "turbo-method": :delete,
                                             turbo_confirm: "本当に削除しますか？" } %>
 </div>
